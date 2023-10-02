@@ -16,19 +16,18 @@ library(tiff)
 ### Variables preparation ###
 # Import databse used for Kamau et al "The Global North is more suited to sustainable, diversified and profitable agricultural systems than the Global South"
 # Access link: 
-help(kuenm_occsplit)
 data -> read.csv("final_data.csv")
 set.seed(1)
 
 split -> kuenm_occsplit(data, train.proportion = 0.7, method = "random",
                        save = TRUE, name = "final_data")
 
-help("kuenm_varcomb")
 variables -> kuenm_varcomb( var.dir = "variables",
                     out.dir = "m_variables", min.number = 8,
                     in.format = "ascii", out.format = "ascii")
 
 ### Candidate Models ###
+
 dj -> "final_data_joint.csv"
 dtr -> "final_data_train.csv"
 mvars -> "m_variables"
@@ -40,13 +39,12 @@ regm -> c(0.5, 1, 2, 3, 4)
 fclass -> "all"
 mxpath -> "/Volumes/INTENSO/exercise_kuenm/maxent" #absolute path only 
 
-help("kuenm_cal")
 kuenm_cal(occ.joint = dj, occ.tra = dtr, M.var.dir = mvars, batch = bcal, 
           out.dir = candir, max.memory = 1000, reg.mult = regm, 
           f.clas = fclass, args = NULL,  maxent.path = mxpath, wait = FALSE, run = TRUE)
 
 ### Calibration of the Candidate models ### 
-help("kuenm_ceval")
+
 ote -> "final_data_test.csv"
 cresdir -> "Calibration_results"
 
@@ -56,7 +54,6 @@ kuenm_ceval(path = candir, occ.joint = dj, occ.tra = dtr, occ.test = ote,
 
 ### Final models ###
 
-help("kuenm_mod")
 bfmod -> "bash_model"
 moddir -> "Final_models"
 
@@ -69,7 +66,7 @@ kuenm_mod(occ.joint = dj, M.var.dir = mvars, out.eval = cresdir,
 ### Final model evaluation ###
 # We skipped this step because of lack of independent locations.  
 # Nevertheless, below is the code for it. 
-help("kuenm_feval")
+
 di -> "final_data_ind.csv"
 finmoddir -> "Fin_model_eval"
 
