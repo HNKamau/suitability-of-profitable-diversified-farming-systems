@@ -83,30 +83,30 @@ kuenm_feval(path = moddir, occ.joint = dj, occ.ind = di, replicates = TRUE,
 
 ### BINARY MAPS ###
 
-fdata_asc <-  raster("exercise_kuenm/Final_models/M_1_F_lq_Set_1/final_data_avg.asc")
+fdata_asc <-  raster(paste0(wd,"Final_models/M_1_F_lq_Set_1/final_data_avg.asc"))
 
 # Binary map using balanced trainign omission threshold value
 fdata_asc_bto <-  function(x) {
   ifelse(x <=  0.0672, 0,
-         ifelse(x >  0.0672, 1, NA)) }
+         ifelse(x >  0.0672, 1, NA))}
 fdata_asc_bto_binary <-  calc(fdata_asc, fun = fdata_asc_bto)
 
 # Binary map using maximum sensitivity plus specificity threshold value
 fdata_asc_mtss <-  function(x) {
   ifelse(x <=  0.2685, 0,
-         ifelse(x >  0.2685, 1, NA)) }
+         ifelse(x >  0.2685, 1, NA))}
 fdata_asc_mtss_binary <-  calc(fdata_asc, fun = fdata_asc_mtss)
 
 # Binary map using equal trainign sensitivity and specificity threshold value
 fdata_asc_etss <-  function(x) {
   ifelse(x <=  0.2608, 0,
-         ifelse(x >  0.2608, 1, NA)) }
+         ifelse(x >  0.2608, 1, NA))}
 fdata_asc_etss_binary <-  calc(fdata_asc, fun = fdata_asc_etss)
 
 # Binary map using 10 percentile training presence threshold value
 fdata_asc_ptp <-  function(x) {
   ifelse(x <=  0.157, 0,
-         ifelse(x >  0.157, 1, NA)) }
+         ifelse(x >  0.157, 1, NA))}
 fdata_asc_ptp_binary <-  calc(fdata_asc, fun = fdata_asc_ptp)
 
 # stack binary rasters of dfps
