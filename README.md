@@ -1,4 +1,4 @@
-Suitability modelling of profitable diversified farming systems
+# **Suitability modelling of profitable diversified farming systems**
 Related Manuscript http://dx.doi.org/10.1038/s43247-023-01062-3
 
 Authors: Hannah Kamau (hkamau@uni-bonn.de), Shahrear Roman (shahrear@hum.kuet.ac.bd), and Lisa Biber-Freudenberger (lfreuden@uni-bonn.de).
